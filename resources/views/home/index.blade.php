@@ -8,5 +8,6 @@
 </head>
 <body>
     <x-app-layout></x-app-layout>
+    <h1>Users</h1>
 </body>
 </html>
