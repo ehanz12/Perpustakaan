@@ -58,10 +58,8 @@
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
-                    <!-- ***** Menu End ***** -->
                 </nav>
             </div>
         </div>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
