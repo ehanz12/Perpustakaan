@@ -1,48 +1,78 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Perpustakaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-500 to-indigo-700 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 w-full max-w-md shadow-2xl">
+        <div class="text-center mb-8">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-20 h-20 mx-auto mb-4 object-contain">
+            <h1 class="text-2xl font-bold text-gray-800">Welcome Back!</h1>
+        </div>
 
-        <x-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-4 bg-red-50 text-red-600 p-3 rounded-lg text-sm" />
 
         @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600">
+            <div class="mb-4 bg-green-50 text-green-600 p-3 rounded-lg text-sm">
                 {{ $value }}
             </div>
         @endsession
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" class="space-y-6">
             @csrf
 
             <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <input 
+                    id="email" 
+                    type="email" 
+                    name="email" 
+                    :value="old('email')" 
+                    required 
+                    autofocus
+                    placeholder="Email Address"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400"
+                >
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            <div>
+                <input 
+                    id="password" 
+                    type="password" 
+                    name="password" 
+                    required
+                    placeholder="Password"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400"
+                >
             </div>
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+            <div class="flex items-center">
+                <input 
+                    type="checkbox" 
+                    id="remember_me" 
+                    name="remember" 
+                    class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                >
+                <label for="remember_me" class="ml-2 text-sm text-gray-600">Remember me</label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+            @if (Route::has('password.request'))
+                <div class="text-right">
+                    <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:text-blue-800 transition duration-200">
+                        Forgot your password?
                     </a>
-                @endif
+                </div>
+            @endif
 
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
+            <button 
+                type="submit" 
+                class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:opacity-90 transform hover:-translate-y-0.5 transition duration-200 shadow-lg"
+            >
+                Sign In
+            </button>
         </form>
-    </x-authentication-card>
-</x-guest-layout>
+    </div>
+</body>
+</html>
