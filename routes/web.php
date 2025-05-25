@@ -17,3 +17,6 @@ Route::middleware([
 });
 
 Route::get('/home', [AdminController::class, 'index']);
+
+Route::get('/categories_page', [AdminController::class, 'categories_page']);
+Route::post('/add_category', [AdminController::class, 'add_category']);

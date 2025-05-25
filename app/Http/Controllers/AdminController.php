@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
+use App\Models\Categories;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -29,5 +30,18 @@ class AdminController extends Controller
         {
             return redirect()->back();
         }
+    }
+
+    public function categories_page()
+    {
+        return view('admin.categories_page');
+    }
+
+    public function add_category(Request $request)
+    { 
+        $data = new Categories;
+        $data->title = $request->category;
+        $data->save();
+        return redirect()->back()->with('success', 'Category added successfully');
     }
 }
