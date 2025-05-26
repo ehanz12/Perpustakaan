@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Book;
 
+use App\Models\User;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,5 +73,33 @@ class AdminController extends Controller
     {
         $datas = Categories::all();
         return view('admin.add_book', compact('datas'));
+    }
+
+    public function store_book(Request $request)
+    {
+        $data = new Book;
+        $data->title = $request->title;
+        $data->author_name = $request->author_name;
+        $data->prince = $request->prince;
+        $data->description = $request->description;
+        $data->category_id = $request->category;
+        $book_img = $request->book_img;
+        
+        if($book_img){
+          $book_img_name = time().'.'.$book_img->getClientOriginalExtension();
+          $request->book_img->move('book_img', $book_img_name);
+          $data->book_img = $book_img_name;  
+        }
+
+        $author_img = $request->author_img;
+
+        if($author_img){
+          $author_img_name = time().'.'.$author_img->getClientOriginalExtension();
+          $request->author_img->move('author_img', $author_img_name);
+          $data->author_img = $author_img_name;
+        }
+
+        $data->save();
+        return redirect()->back()->with('success', 'Book added successfully');
     }
 }
