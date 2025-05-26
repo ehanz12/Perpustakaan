@@ -67,4 +67,10 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
     }
+
+    public function add_book()
+    {
+        $datas = Categories::all();
+        return view('admin.add_book', compact('datas'));
+    }
 }
