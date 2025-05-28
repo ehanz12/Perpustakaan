@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('author_name')->nullable();
             $table->string('prince')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('quantity')->nullable();
             $table->string('book_img')->nullable();
             $table->string('author_img')->nullable();

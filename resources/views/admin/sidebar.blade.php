@@ -14,8 +14,8 @@
             <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Book </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="{{ url('add_book') }}">Add Book</a></li>
-                <li><a href="#">Page</a></li>
+                <li><a href="{{ url('add_book') }}">Add Books</a></li>
+                <li><a href="{{ url('show_book') }}">Show Books</a></li>
                 <li><a href="#">Page</a></li>
               </ul>
             </li>

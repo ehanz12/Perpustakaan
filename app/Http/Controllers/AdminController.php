@@ -81,6 +81,7 @@ class AdminController extends Controller
         $data->title = $request->title;
         $data->author_name = $request->author_name;
         $data->prince = $request->prince;
+        $data->quantity = $request->quantity;
         $data->description = $request->description;
         $data->category_id = $request->category;
         $book_img = $request->book_img;
@@ -101,5 +102,52 @@ class AdminController extends Controller
 
         $data->save();
         return redirect()->back()->with('success', 'Book added successfully');
+    }
+
+    public function show_book()
+    {
+        $books = Book::all();
+        return view('admin.show_book', compact('books'));
+    }
+
+    public function delete_book($id)
+    {
+        $data = Book::find($id);
+        $data->delete();
+        return redirect()->back()->with('success', 'Book deleted successfully');
+    }
+
+    public function edit_book($id)
+    {
+        $datas = Categories::all();
+        $book = Book::find($id);
+        return view('admin.edit_book', compact('datas', 'book'));
+    }
+
+    public function update_book(Request $request, $id)
+    {
+        $data = Book::find($id);
+        $data->title = $request->title;
+        $data->author_name = $request->author_name;
+        $data->prince = $request->prince;
+        $data->quantity = $request->quantity;
+        $data->description = $request->description;
+        $data->category_id = $request->category;
+        $book_img = $request->book_img;
+
+        if($book_img){
+
+          $book_img_name = time().'.'.$book_img->getClientOriginalExtension();
+          $request->book_img->move('book_img', $book_img_name);
+          $data->book_img = $book_img_name;
+        }
+        $author_img = $request->author_img;
+        if($author_img){
+          $author_img_name = time().'.'.$author_img->getClientOriginalExtension();
+          $request->author_img->move('author_img', $author_img_name);
+          $data->author_img = $author_img_name;
+        }
+        $data->save();
+        return redirect('/show_book')->with('success', 'Book added successfully');
     }
 }
