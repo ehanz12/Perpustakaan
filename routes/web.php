@@ -29,3 +29,11 @@ Route::get('/show_book', [AdminController::class, 'show_book'])->name('show_book
 Route::get('/edit_book/{id}', [AdminController::class, 'edit_book'])->name('edit_book');
 Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
 Route::get('/delete_book/{id}', [AdminController::class, 'delete_book'])->name('delete_book');
+
+Route::get('/borrow_request', [AdminController::class, 'borrow_request'])->name('borrow_request');
+Route::post('/update_borrow/{id}', [AdminController::class, 'update_borrow'])->name('update_borrow');
+Route::post('/return_borrow/{id}', [AdminController::class, 'return_borrow'])->name('return_borrow');
+Route::post('/rejected_borrow/{id}', [AdminController::class, 'rejected_borrow'])->name('rejected_borrow');
+
+
+Route::get('/borrow_book/{id}', [HomeController::class, 'borrow_books'])->name('borrow_books');

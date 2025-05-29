@@ -9,17 +9,16 @@
     </div>
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
-            <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
+            <li class="active"><a href="{{ url('/home') }}"> <i class="icon-home"></i>Home </a></li>
             <li><a href="{{ url('categories_page') }}"> <i class="icon-grid"></i>Categories</a></li>
             <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Book </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ url('add_book') }}">Add Books</a></li>
                 <li><a href="{{ url('show_book') }}">Show Books</a></li>
-                <li><a href="#">Page</a></li>
               </ul>
             </li>
-            <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
+            <li><a href="{{ url('borrow_request') }}"> <i class="icon-logout"></i>Borrow request </a></li>
     </ul><span class="heading">Extras</span>
     <ul class="list-unstyled">
       <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>

@@ -1,6 +1,13 @@
  <!-- ***** Main Banner Area Start ***** -->
  <div class="main-banner">
     <div class="container">
+      <div>
+        @if(session()->has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session()->get('message') }}
+        </div>
+        @endif
+      </div>
       <div class="row">
         <div class="col-lg-6 align-self-center">
           <div class="header-text">
