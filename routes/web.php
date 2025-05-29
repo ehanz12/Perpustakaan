@@ -37,3 +37,4 @@ Route::post('/rejected_borrow/{id}', [AdminController::class, 'rejected_borrow']
 
 
 Route::get('/borrow_book/{id}', [HomeController::class, 'borrow_books'])->name('borrow_books');
+Route::get('/book_history', [HomeController::class, 'book_history'])->name('book_history');

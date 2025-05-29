@@ -37,4 +37,15 @@ class HomeController extends Controller
             return redirect()->back()->with('message', 'Buku tidak cukup');
         }
     }
+
+    public function book_history()
+    {
+        if(Auth::id()){
+            $user_id = Auth::user()->id;
+            $books = Borrow::where('user_id', $user_id)->get();
+            return view('home.book_history', compact('books'));
+        }else {
+            return redirect()->back();
+        }
+    }
 }

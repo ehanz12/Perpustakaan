@@ -23,13 +23,15 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="{{ url('/') }}" class="active">Home</a></li>
                         <li><a href="explore.html">Explore</a></li>
                         <li><a href="details.html">Item Details</a></li>
-                        <li><a href="author.html">Author</a></li>
                         <li><a href="create.html">Create Yours</a></li>
                         @if (Route::has('login'))
                             @auth
+                            <li class="nav-item">
+                                <a href="{{ url('book_history') }}">My History</a>
+                            </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ Auth::user()->name }}
