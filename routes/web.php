@@ -38,3 +38,7 @@ Route::post('/rejected_borrow/{id}', [AdminController::class, 'rejected_borrow']
 
 Route::get('/borrow_book/{id}', [HomeController::class, 'borrow_books'])->name('borrow_books');
 Route::get('/book_history', [HomeController::class, 'book_history'])->name('book_history');
+Route::get('/cancel_request/{id}', [HomeController::class, 'cancel_request'])->name('cancel_request');
+Route::get('/explore', [HomeController::class, 'explore'])->name('explore');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/cat_search/{id}', [HomeController::class, 'category_search'])->name('category_search');

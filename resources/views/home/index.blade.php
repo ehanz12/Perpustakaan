@@ -13,7 +13,6 @@
 
   @include('home.main')
   
-  @include('home.categories')
   
 
   @include('home.book')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Borrow;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +35,7 @@ class HomeController extends Controller
             }
 
         }else {
-            return redirect()->back()->with('message', 'Buku tidak cukup');
+            return redirect()->back()->with('message', 'Buku sudah habis');
         }
     }
 
@@ -47,5 +48,34 @@ class HomeController extends Controller
         }else {
             return redirect()->back();
         }
+    }
+
+    public function cancel_request($id)
+    {
+        $data = Borrow::find($id);
+        $data->delete();
+        return redirect()->back()->with('message', 'Request telah dibatalkan');
+    }
+
+    public function explore()
+    {
+        $categories = Categories::all();
+        $books = Book::all();
+        return view('home.explore', compact('books', 'categories'));
+    }
+    
+    public function search(Request $request)
+    {
+        $categories = Categories::all();
+        $searchText = $request->search;
+        $books = Book::where('title', 'LIKE', "%$searchText%")->orWhere('author_name', 'LIKE', "%$searchText%")->get();
+        return view('home.explore', compact('books', 'categories'));
+    }
+
+    public function category_search($id)
+    {
+        $categories = Categories::all();
+        $books = Book::where('category_id', $id)->get();
+        return view('home.explore', compact('books', 'categories'));
     }
 }

@@ -15,6 +15,11 @@
     <div class="container">
       <div class="row">
         <div class="container py-5">
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             <div class="d-flex justify-content-between align-items-center mb-5">
                 <div>
                     <h3 class="text-white mb-0">Riwayat Peminjaman</h3>
@@ -62,6 +67,14 @@
                                     <i class="bi bi-calendar3 me-1"></i>
                                     <small>Dipinjam: {{ $book->created_at->format('d M Y') }}</small>
                                 </div>
+                                @if ($book->status == 'Applied')    
+                                <button class="btn btn-danger btn-sm position-relative overflow-hidden">
+                                    <span class="position-relative z-1">
+                                        <a href="{{ url('cancel_request', $book->id) }}" class="text-white">Cancel Request</a>
+                                    </span>
+                                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-opacity-25 bg-white opacity-0 hover-opacity-100 transition-all"></div>
+                                </button>
+                                @endif
                                 @if($book->status == 'approved')
                                 <button class="btn btn-primary btn-sm position-relative overflow-hidden">
                                     <span class="position-relative z-1">
