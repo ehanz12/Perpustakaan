@@ -34,7 +34,7 @@ class AdminController extends Controller
 
         else
         {
-            return redirect()->back();
+            return redirect();
         }
     }
 

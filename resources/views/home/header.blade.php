@@ -26,7 +26,11 @@
                         <li><a href="{{ url('/') }}" class="active">Home</a></li>
                         <li><a href="{{ url('explore') }}">Explore</a></li>
                         <li><a href="details.html">Item Details</a></li>
-                        <li><a href="create.html">Create Yours</a></li>
+                        @auth
+                            @if (Auth::user()->usertype == 'admin')
+                        <li><a href="{{ url('admin') }}">Admin Panel</a></li>
+                            @endif
+                        @endauth
                         @if (Route::has('login'))
                             @auth
                             <li class="nav-item">
@@ -38,9 +42,9 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
-                                            <form method="POST" action="{{ route('logout') }}">
+                                            <form method="POST" action="{{ url('logout') }}">
                                                 @csrf
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                <a class="dropdown-item" href="{{ url('logout') }}"
                                                    onclick="event.preventDefault();
                                                    this.closest('form').submit();">
                                                    <i class="fas fa-sign-out-alt me-2"></i>Logout

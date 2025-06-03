@@ -28,9 +28,9 @@
             </div>
             <div aria-labelledby="profileDropdown" class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-divider"></div>
-              <form method="POST" action="{{ route('logout') }}">
+              <form method="POST" action="{{ url('logout') }}">
                 @csrf
-                <a class="dropdown-item" href="{{ route('logout') }}" 
+                <a class="dropdown-item" href="{{ url('logout') }}" 
                    onclick="event.preventDefault();
                    this.closest('form').submit();">
                    <i class="icon-logout mr-2"></i>Logout
