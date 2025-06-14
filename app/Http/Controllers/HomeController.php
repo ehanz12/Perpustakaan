@@ -63,6 +63,12 @@ class HomeController extends Controller
         $books = Book::all();
         return view('home.explore', compact('books', 'categories'));
     }
+
+    public function book_details($id)
+    {
+        $books = Book::find($id);
+        return view('home.book_details', compact('books'));
+    }
     
     public function search(Request $request)
     {

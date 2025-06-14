@@ -25,7 +25,6 @@
                     <ul class="nav">
                         <li><a href="{{ url('/') }}" class="active">Home</a></li>
                         <li><a href="{{ url('explore') }}">Explore</a></li>
-                        <li><a href="details.html">Item Details</a></li>
                         @auth
                             @if (Auth::user()->usertype == 'admin')
                         <li><a href="{{ url('admin') }}">Admin Panel</a></li>
@@ -68,4 +67,10 @@
             </div>
         </div>
     </div>
+    @if (session()->has('error'))
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session()->get('error') }}
+  </div>
+@endif
+
   </header>

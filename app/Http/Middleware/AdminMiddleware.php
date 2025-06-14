@@ -22,6 +22,6 @@ class AdminMiddleware
             return $next($request);
         }
     }
-        return redirect()->back();
+        return redirect('/')->with('error', 'Kamu Bukan Admin, silahkan login sebagai admin');
     }
 }

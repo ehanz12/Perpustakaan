@@ -61,7 +61,7 @@
                     Total<br><strong>{{ number_format($book->prince, 0, ',', '.') }}</strong><br>
                   </span>
                   <div class="text-button">
-                    <a href="details.html">View Item Details</a>
+                    <a href="{{ url('book_details', $book->id) }}">View Item Details</a>
                   </div>
                   <div class="text-button">
                     <a class="btn btn-primary text-white" href="{{ url('borrow_book', $book->id) }}">Apply To Borrow</a>
