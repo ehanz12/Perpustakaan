@@ -27,7 +27,7 @@
                         <li><a href="{{ url('explore') }}">Explore</a></li>
                         @auth
                             @if (Auth::user()->usertype == 'admin')
-                        <li><a href="{{ url('admin') }}">Admin Panel</a></li>
+                        <li><a href="{{ url('home') }}">Admin Panel</a></li>
                             @endif
                         @endauth
                         @if (Route::has('login'))

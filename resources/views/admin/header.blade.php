@@ -28,6 +28,9 @@
             </div>
             <div aria-labelledby="profileDropdown" class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-divider"></div>
+              <a href="{{ url('/') }}" class="dropdown-item">
+                <i class="icon-user mr-2"></i> Liblary
+              </a>
               <form method="POST" action="{{ url('logout') }}">
                 @csrf
                 <a class="dropdown-item" href="{{ url('logout') }}" 
